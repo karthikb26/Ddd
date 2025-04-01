@@ -6,8 +6,19 @@
   <title>Dangerous Dave Clone</title>
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.js"></script>
   <style>
-    body { margin: 0; overflow: hidden; }
-    canvas { display: block; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: black;
+    }
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
     #mobile-controls {
       position: absolute;
       bottom: 20px;
@@ -46,11 +57,7 @@
       default: 'arcade',
       arcade: { gravity: { y: 1000 }, debug: false }
     },
-    scene: {
-      preload,
-      create,
-      update
-    }
+    scene: { preload, create, update }
   };
 
   const game = new Phaser.Game(config);
@@ -63,21 +70,18 @@
     this.load.image('ground', 'https://labs.phaser.io/assets/sprites/platform.png');
     this.load.image('star', 'https://labs.phaser.io/assets/sprites/star.png');
     this.load.image('bomb', 'https://labs.phaser.io/assets/sprites/bomb.png');
-    //this.load.audio('jumpSound', 'https://labs.phaser.io/assets/audio/SoundEffects/jump.mp3');
-    //this.load.audio('collectSound', 'https://labs.phaser.io/assets/audio/SoundEffects/pickup.wav');
-    //this.load.audio('explosion', 'https://labs.phaser.io/assets/audio/SoundEffects/explosion.mp3');
-    this.jumpSound = this.sound?.add('jumpSound') ?? { play: () => {} };
-this.collectSound = this.sound?.add('collectSound') ?? { play: () => {} };
-this.explosion = this.sound?.add('explosion') ?? { play: () => {} };
+    this.load.audio('jumpSound', 'https://labs.phaser.io/assets/audio/SoundEffects/jump.mp3');
+    this.load.audio('collectSound', 'https://labs.phaser.io/assets/audio/SoundEffects/pickup.wav');
+    this.load.audio('explosion', 'https://labs.phaser.io/assets/audio/SoundEffects/explosion.mp3');
     this.load.spritesheet('dude', 'https://labs.phaser.io/assets/sprites/dude.png', {
       frameWidth: 32, frameHeight: 48
     });
   }
 
   function create() {
-    this.jumpSound = this.sound.add('jumpSound');
-    this.collectSound = this.sound.add('collectSound');
-    this.explosion = this.sound.add('explosion');
+    this.jumpSound = this.sound?.add('jumpSound') ?? { play: () => {} };
+    this.collectSound = this.sound?.add('collectSound') ?? { play: () => {} };
+    this.explosion = this.sound?.add('explosion') ?? { play: () => {} };
 
     this.add.image(400, 240, 'sky');
 
