@@ -63,9 +63,12 @@
     this.load.image('ground', 'https://labs.phaser.io/assets/sprites/platform.png');
     this.load.image('star', 'https://labs.phaser.io/assets/sprites/star.png');
     this.load.image('bomb', 'https://labs.phaser.io/assets/sprites/bomb.png');
-    this.load.audio('jumpSound', 'https://labs.phaser.io/assets/audio/SoundEffects/jump.mp3');
-    this.load.audio('collectSound', 'https://labs.phaser.io/assets/audio/SoundEffects/pickup.wav');
-    this.load.audio('explosion', 'https://labs.phaser.io/assets/audio/SoundEffects/explosion.mp3');
+    //this.load.audio('jumpSound', 'https://labs.phaser.io/assets/audio/SoundEffects/jump.mp3');
+    //this.load.audio('collectSound', 'https://labs.phaser.io/assets/audio/SoundEffects/pickup.wav');
+    //this.load.audio('explosion', 'https://labs.phaser.io/assets/audio/SoundEffects/explosion.mp3');
+    this.jumpSound = this.sound?.add('jumpSound') ?? { play: () => {} };
+this.collectSound = this.sound?.add('collectSound') ?? { play: () => {} };
+this.explosion = this.sound?.add('explosion') ?? { play: () => {} };
     this.load.spritesheet('dude', 'https://labs.phaser.io/assets/sprites/dude.png', {
       frameWidth: 32, frameHeight: 48
     });
